@@ -1,16 +1,10 @@
 //Creado con Ardora - www.webardora.net
 //bajo licencia Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 //para otros usos contacte con el autor
-var timeInterval; $(document).ready(function(){paintOk();randomSort();timeInterval=setInterval("paintTab()",1000);
+var timeInterval; $(document).ready(function() {randomSort();timeInterval=setInterval("paintTab()",1000);
 var canWidth=$("#ardoraAct").css("width").replace("px","");var canHeight=$("#ardoraAct").css("height").replace("px","");$("#ardoraActCanvas").attr({"width": canWidth,"height": canHeight})
 $("#ardoraActCanvasAnim").attr({"width": canWidth,"height": canHeight});
-$("#buttonOk").keydown(function(e){if (e.which != 9){isCorrect();}});$("#buttonOk").focus(function(e){removeOk();});$("#buttonOk").blur(function(e){paintOk();});
-$("#buttonOk").mouseenter(function(){$(this).css("-webkit-box-shadow"," 0px 0px 0px rgba(50, 50, 50, 0.5)");
-$(this).css("box-shadow" , "0px 0px 0px rgba(50, 50, 50, 0.75)");removeOk();
-}).mouseleave(function() { $(this).css("-webkit-box-shadow"," 4px 4px 4px rgba(50, 50, 50, 0.5)"); $(this).css("box-shadow" , "4px 4px 4px rgba(50,50,50,0.5)"); paintOk();}).mousedown(function(){if (typeGame!=99){isCorrect();}});
 initAct();})
-function paintOk() {document.getElementById("outerRect").setAttribute("fill", colorButton);document.getElementById("stop1").setAttribute("stop-color", colorBack);document.getElementById("stop2").setAttribute("stop-color", colorSele);document.getElementById("innerRect").setAttribute("stroke", colorText);document.getElementById("buttonText").setAttribute("fill", colorText);}
-function removeOk() {document.getElementById("outerRect").setAttribute("fill", colorSele);document.getElementById("stop1").setAttribute("stop-color", colorBack);document.getElementById("stop2").setAttribute("stop-color", colorButton);document.getElementById("innerRect").setAttribute("stroke", colorText);document.getElementById("buttonText").setAttribute("fill", colorText);}
 function paintTab() {var svgNS = "http://www.w3.org/2000/svg";var container = document.getElementById("ardoraTab");var oldSVG = document.getElementById("ardoraTabSVG");if (oldSVG) {container.removeChild(oldSVG);};var totalHeight = 1;if (tiTime) {totalHeight += 85 + 3;};if (tiSuccesses) {totalHeight += 45 + 3;};if (tiAttempts) {totalHeight += 45 + 3;};if (tiScore) {totalHeight += 45;};totalHeight=totalHeight+3;var svg = document.createElementNS(svgNS, "svg");svg.setAttribute("id", "ardoraTabSVG");svg.setAttribute("width", "70");svg.setAttribute("height", totalHeight.toString());
 var defs = document.createElementNS(svgNS, "defs");if (tiTime) {if (!isShowMessage) {timeAct -= 1;};if (timeAct == 0) {goTime();};var gradTimer = document.createElementNS(svgNS, "radialGradient");gradTimer.setAttribute("id", "gradTimer");gradTimer.setAttribute("cx", "35");gradTimer.setAttribute("cy", "54");gradTimer.setAttribute("r", "25");gradTimer.setAttribute("fx", "35");gradTimer.setAttribute("fy", "54");
 var stop1 = document.createElementNS(svgNS, "stop");stop1.setAttribute("offset", "0%");stop1.setAttribute("stop-color", colorBack);gradTimer.appendChild(stop1);var stop2 = document.createElementNS(svgNS, "stop");stop2.setAttribute("offset", "100%");stop2.setAttribute("stop-color", colorButton);gradTimer.appendChild(stop2);defs.appendChild(gradTimer);};svg.appendChild(defs);
@@ -57,8 +51,8 @@ lines.push(currentLine);svg.removeChild(temp);var totalHeight = rectHeight * lin
 var targetWidthMulti = width - 80;var animationMulti = setInterval(function() {wAnimMulti += 2;xAnimMulti -= 1;borderRectMulti.setAttribute("x", xAnimMulti);borderRectMulti.setAttribute("width", wAnimMulti);if (wAnimMulti >= targetWidthMulti) {clearInterval(animationMulti);for (var j = 0; j < lines.length; j++) {addText(lines[j], 50, (height / 2) - (rectHeight * lines.length / 2) + ((j + 1) * rectHeight));};messagePlayAudio(typeMessage);goURL(urlMessage, timeOnMessage, goURLTarget, typeMessage, tiTimeType);}}, 1);}
 svg.style.zIndex = 5000;if (typeMessage === "Error") {backAct(timeOnMessage, oldTypeGame);};if (typeMessage === "Time") {if (tiTimeType === 1) {timeAct = timeIni;backTime(timeOnMessage);backAct(timeOnMessage, oldTypeGame);};if (tiTimeType === 2) {backSol(timeOnMessage, oldTypeGame);}};if (typeMessage=="Next") {backAct(timeOnMessage, oldTypeGame);}
 }
-function backAct(seg,oldTypeGame){setTimeout(function(){paintBack();isShowMessage=false;typeGame=oldTypeGame;
-showCorrect();
+function backAct(seg,oldTypeGame){setTimeout(function(){paintBack();isShowMessage=false;
+document.getElementById("ardoraActSVG").style["visibility"]="hidden";typeGame=oldTypeGame;
 },seg*1000);}
 function paintButtonTime() {var h_font=14;var verticalOffset=h_font+6;var rectHeight=h_font+16;var svg=document.getElementById("ardoraActSVG");svg.style.zIndex=5;svg.style.visibility="visible";document.getElementById("ardoraTab").style.visibility="hidden";svg.style.cursor="pointer";svg.setAttribute("tabindex", "0");if (tiTime || tiAttempts || tiScore || tiSuccesses) {clearInterval(timeInterval);};while (svg.firstChild) {svg.removeChild(svg.firstChild);};var bbox=svg.getBoundingClientRect();var width=bbox.width;var height=bbox.height;
 var bgRect=document.createElementNS("http://www.w3.org/2000/svg", "rect");bgRect.setAttribute("x", 0);bgRect.setAttribute("y", 0);bgRect.setAttribute("width", width);bgRect.setAttribute("height", height);bgRect.setAttribute("fill", colorButton);bgRect.setAttribute("fill-opacity", 0.98);svg.appendChild(bgRect);var borderRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");borderRect.setAttribute("x", 5);borderRect.setAttribute("y", 5);borderRect.setAttribute("width", width - 10);borderRect.setAttribute("height", height - 10);borderRect.setAttribute("fill","none");borderRect.setAttribute("stroke",colorSele);borderRect.setAttribute("stroke-width",2);svg.appendChild(borderRect);
@@ -75,14 +69,7 @@ function opURL(url, seg, tar, tM,tT) {if (url != "") {window.open(url,tar)};if (
 function cssColors(){
 $("body").css("background-color",colorBack);
 $("#ardoraMain").css("color",colorText);
-if ($(".txtCell_input").length !=0) { $(".txtCell_input").css("background-color","#FFFDFD"); $(".txtCell_input").css("color",colorText);};
-if ($(".txtCell_txt").length !=0) { $(".txtCell_txt").css("background-color","#FFFDFD")}
-if ($(".ardoraInput").length !=0) {var color2="#FF8000";var color1="#FFFDFD";
-$(".ardoraInput").css("background","-webkit-radial-gradient(center, ellipse, "+color1+","+color2+")");
-$(".ardoraInput").css("background","-moz-radial-gradient(center,ellipse, "+color1+", "+color2+")");
-$(".ardoraInput").css("background","-ms-radial-gradient(center, ellipse, "+color1+", "+color2+")");
-$(".ardoraInput").css("background","-o-radial-gradient(center, ellipse, "+color1+", "+color2+")");
-$(".ardoraInput").css("background","radial-gradient(ellipse at center, "+color1+", "+color2+")");
-$(".ardoraInput").css("filter","progid:DXImageTransform.Microsoft.gradient(startColorstr='"+color1+"',endColorstr='"+color2+"')");}
-$("#ardoraMain").css("font-family",fEnun); $(".txtCell").css("font-family",fActi); $("#ardoraAct").css("font-family",fActi);$(".txtCellHome").css("font-family",fActi);$(".txtCell_txt").css("font-family",fActi);
+if ($(".txtCell_input").length !=0) { $(".txtCell_input").css("background-color",colorBack); $(".txtCell_input").css("color",colorText);}
+if ($(".txtCell_txt").length !=0) { $(".txtCell_txt").css("background-color",colorBack)}
+$("#ardoraMain").css("font-family",fEnun); $(".txtCell").css("font-family",fActi);
 }
