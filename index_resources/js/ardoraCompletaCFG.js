@@ -25,10 +25,10 @@ var goURLOk="_blank"; goURLTime="_blank"; goURLAttempts="_blank"; goURLError="_b
 var consolidateSuccess=0; var consolidateScore=0;
 borderOk="#008000"; borderTime="#FF0000";borderError="#FF0000"; borderAttempts="#FF0000";
 var indexTXT=0; var txtC=['<p>El formulario IR-17 se utiliza para declarar las retenciones de impuestos realizadas por las empresas. Si la empresa contrata a un contador independiente y le paga 30,000 pesos por sus honorarios, la tasa de retención aplicable es del  <input aria-label="Item 1" type="text" name="item1" id="item1" class="ardoraInput" > </p><p> </p>','<p>Lo que equivale a un monto retenido de <input aria-label="Item 2" type="text" name="item2" id="item2" class="ardoraInput" >,pesos. </p><p>  </p><p> </p>','<p>Por otro lado, si la empresa realiza un pago por concepto de alquiler de local por 45,000 pesos, la retención correspondiente que se debe reportar es de <input aria-label="Item 3" type="text" name="item3" id="item3" class="ardoraInput" > pesos </p><p>  </p><p> </p>'];
-var b=["Mg==","NA==","Mg==","Mw==","MQ==","Mw=="];
-var c=[3,4,4,4,3,4];
-var answers=["MTAl","NDUwMA==","MzAwMA==","MzAwMA==","MTAl","NDUwMA=="];
-var a=["1","1","2","1","1","3"];
+var b=["Mg==","Mg==","NA==","Mw==","Mw==","MQ=="];
+var c=[4,3,4,4,4,3];
+var answers=["MzAwMA==","MTAl","NDUwMA==","MzAwMA==","NDUwMA==","MTAl"];
+var a=["2","1","1","1","3","1"];
 var itemCorr=["0","0","0"];
 var itemHelp=["","",""];
 var animationX=[]; animationY=[]; animationPosX=[]; animationPosY=[]; animationLetter=[];
